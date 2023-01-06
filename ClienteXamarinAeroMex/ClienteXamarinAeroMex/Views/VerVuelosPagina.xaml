@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ClienteXamarin.ViewModels"
+             x:Class="Aeropuerto.Views.VerVuelosPagina">
+    <ContentPage.BindingContext>
+        <vm:PrincipalViewModel></vm:PrincipalViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="Datos">
+
+            <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="-5,40,0,0"></Setter>
+            <Setter Property="FontFamily" Value="Square"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="CharacterSpacing" Value="2"></Setter>
+            <Setter Property="TextColor" Value="White"></Setter>
+
+
+
+        </Style>
+
+    </ContentPage.Resources>
+
+    <StackLayout>
+
+        <StackLayout.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="DarkSlateBlue" Offset="0.3"></GradientStop>
+                <GradientStop Color="AliceBlue" Offset="1.3"></GradientStop>
+                <GradientStop Color="WhiteSmoke" Offset="1.0"></GradientStop>
+            </LinearGradientBrush>
+        </StackLayout.Background>
+        
+        <Image  Source="https://www.pngkit.com/png/full/36-366767_lneas-aeromexico-cargo-logo.png"></Image>
+        <StackLayout Margin="140,10,20,20">
+            <FlexLayout>
+                <Label>Lista de vuelos</Label>
+                <Image WidthRequest="25" Source="https://cdn-icons-png.flaticon.com/512/3324/3324544.png"></Image>
+            </FlexLayout>
+        </StackLayout>
+       
+            <ListView RowHeight="100" HeightRequest="{OnPlatform Android='300'}" x:Name="Lista" ItemsSource="{Binding Vuelos}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="10,60,10,10" HeightRequest="76" WidthRequest="100" CornerRadius="10" BackgroundColor="Black" >
+                                <Grid BackgroundColor="blue" WidthRequest="100" HeightRequest="100" Margin="-20,-20,-20,-20" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                       
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0"  Text="{Binding Hora}" ></Label>
+                                    <Label Grid.Column="1"  Text="{Binding  Salida}" ></Label>
+                                    <Label Grid.Column="2"  Text="{Binding  CodigoVuelo}"></Label>
+                                    <Label Grid.Column="3"  Text="{Binding HoraLlegada}" ></Label>
+                                    <Label Grid.Column="4"  Text="{Binding Estado}" ></Label>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+     
+        <StackLayout Margin="80,0,20,20">
+            <FlexLayout  Margin="10">
+                <Button HeightRequest="50" WidthRequest="100" HorizontalOptions="Center"  TextColor="White" Clicked="Button_Clicked" Text="Agregar"></Button>
+                <Button HeightRequest="50" WidthRequest="100" HorizontalOptions="Center"  TextColor="White" Clicked="Button_Clicked_1" Text="Editar"></Button>
+            </FlexLayout>
+        </StackLayout>
+    </StackLayout>
+
+
+
+
+
+</ContentPage>

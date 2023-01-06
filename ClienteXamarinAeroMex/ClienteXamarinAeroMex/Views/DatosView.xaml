@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ClienteXamarin.ViewModels"
+             x:Class="Aeropuerto.Views.DatosView">
+    <ContentPage.BindingContext>
+        <vm:PrincipalViewModel></vm:PrincipalViewModel>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+
+        <StackLayout.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="WhiteSmoke" Offset="0.1"></GradientStop>
+                <GradientStop Color="#002b5c" Offset="1.0"></GradientStop>
+            </LinearGradientBrush>
+        </StackLayout.Background>
+
+
+
+
+        <Grid >
+
+            <Grid RowSpacing="5"
+                  RowDefinitions="Auto,Auto,Auto"
+                  VerticalOptions="FillAndExpand">
+
+                <Frame BackgroundColor="White" HasShadow="True" Padding="15" Grid.Row="0">
+                    <Image Source="logoAero.jpg"></Image>
+                </Frame>
+
+            </Grid>
+
+            <StackLayout Margin="10,80,0,0">
+                <Label FontAttributes="Italic" 
+                       FontSize="20"
+                       TextColor="Black"
+                        Margin="110,10,0,25 "
+                       FontFamily="Square">Ingresar Datos Del Vuelo
+                </Label>
+
+                <Label TextColor="Black"  >Hora :</Label>
+                <TimePicker Time="{Binding Vuelo.Hora}"  ></TimePicker>
+                <Label TextColor="Black"  >Codigo de vuelo:</Label>
+                <Entry TextColor="Black" Text="{Binding Vuelo.CodigoVuelo}"  ></Entry>
+                <Label TextColor="Black" >Salida:</Label>
+                <Entry TextColor="Black" Text="{Binding Vuelo.Salida}" ></Entry>
+                <Label TextColor="Black">Hora de Llegada :</Label>
+                <TimePicker Time="{Binding Vuelo.HoraLlegada}" ></TimePicker>
+                <Label TextColor="Black" >Estado :</Label>
+                <Picker ItemsSource="{Binding Estados}" ItemDisplayBinding="{Binding Estado1}" Title="Estado1" SelectedItem="{Binding EstadoSeleccionado,Mode=TwoWay}"></Picker>
+
+                <Button WidthRequest="115" HeightRequest="50" Command="{Binding GuardarCommand}" Text="Enviar Datos" 
+                            CornerRadius="20"
+                            Margin="20,30,260,0" 
+                            BackgroundColor="#002b5c" 
+                            TextColor="#ffff"
+                            FontAttributes="Bold">
+
+                </Button>
+            </StackLayout>
+
+
+        </Grid>
+        <Button HorizontalOptions="End" Margin="10,159,20,0" Text="Volver" Clicked="Button_Clicked" BackgroundColor="#002b5c" TextColor="WhiteSmoke"></Button>
+
+
+    </StackLayout>
+</ContentPage>
